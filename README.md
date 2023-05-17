@@ -1,11 +1,25 @@
-install depencies
+# Start App
+
+## Depencies
+
+Install Depencies
 
 ```
-pip install -r requirements.txt
+pipenv install
 ```
 
-update requirements.txt
+## Third Party Api
 
-```
-pipreqs . --force
-```
+- ProxyCurl
+
+  - Pull rich data about people and companies
+  - https://nubela.co/proxycurl/
+
+- SerpApi
+
+  - Scrape Google and other search engines from our fast, easy, and complete API.
+  - https://serpapi.com/
+
+- OpenAI
+  - Artificial Intelligence Provider
+  - https://openai.com/

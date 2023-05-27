@@ -2,13 +2,12 @@ import os
 import requests
 
 
-def getLinkedInProfileFromProxyCurl():
+def getLinkedInProfileFromProxyCurl(linkedin_profile_url: str):
     api_endpoint = 'https://nubela.co/proxycurl/api/v2/linkedin'
     api_key = os.getenv("PROXY_CURL_API_KEY")
     header_dic = {'Authorization': 'Bearer ' + api_key}
-    linkedIn_profile_url = 'https://www.linkedin.com/in/johnrmarty/'
     params = {
-        'url': linkedIn_profile_url,
+        'url': linkedin_profile_url,
         'fallback_to_cache': 'on-error',
         'use_cache': 'if-present',
         'skills': 'include',
@@ -66,11 +65,12 @@ def scrape_linkedin_profile(raw_data: dict):
     return data
 
 
-def getLinkedInProfile():
+def getLinkedInProfile(linkedin_profile_url: str):
     use_proxy_curl_mock_up = os.getenv("USE_PROXY_CURL_MOCK_UP")
     data = {}
     if use_proxy_curl_mock_up == "true":
         data = getLinkedInProfileFromMockup()
     else:
-        data = getLinkedInProfileFromProxyCurl()
+        data = getLinkedInProfileFromProxyCurl(
+            linkedin_profile_url=linkedin_profile_url)
     return scrape_linkedin_profile(data)
